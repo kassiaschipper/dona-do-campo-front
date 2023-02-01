@@ -42,7 +42,7 @@ const Wrapper = styled.div`
   height: 100%;
   top: 0px;
   right: 0px;
-  width: 300px;
+  width: 20vw;
   right: ${(props) => (props.sidebar ? "0" : "-100%")};
   animation: openSidebar 0.4s;
 
@@ -64,7 +64,7 @@ const Wrapper = styled.div`
     }
     to {
       opacity: 1;
-      width: 300px;
+      width: 20vw;
     }
   }
 `;

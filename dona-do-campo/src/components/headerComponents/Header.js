@@ -21,7 +21,7 @@ export default function Header() {
 const Wrapper = styled.div`
 height: 100px;
 display: flex;
-background-color: red;
+color: white;
 //background-color: #1A202C;
 background-color: #000;
 box-shadow: 0 0 20px 3px;
