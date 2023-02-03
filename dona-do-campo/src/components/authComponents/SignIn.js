@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import React from "react";
 import styled from "styled-components";
 import { postSignIn } from "../../service/donaDoCampo";
-import LogoBox from "./LogoBox";
+import Painel from "../../assets/images/Painel.jpg";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
@@ -62,52 +62,62 @@ export default function SignIn() {
   }
 
   return (
-    <Wrapper>
-      <LogoBox />
-      <AuthBox>
-        <TitleWrapper>Bem-vindas! </TitleWrapper>
-        <form onSubmit={sendForm}>
-          <FormContent>
-            <input
-              type="email"
-              name="email"
-              placeholder="e-mail"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              disabled={disabledInput}
-            />
+    <Container>
+      <Wrapper>
+        <AuthBox>
+          <form onSubmit={sendForm}>
+            <FormContent>
+              <input
+                type="email"
+                name="email"
+                placeholder="e-mail"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                disabled={disabledInput}
+              />
 
-            <input
-              type="password"
-              name="password"
-              placeholder="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              disabled={disabledInput}
-            />
-          </FormContent>
-          <Button
-            data-back="OK"
-            data-front="Entrar"
-            disabled={disabledInput}
-          ></Button>
-          <Link to="/sign-up">
-            <p>Ainda não tem cadastro? Crie uma conta!</p>
-          </Link>
-          <Link to="/">
-            <p>Voltar para Home</p>
-          </Link>
-        </form>
-      </AuthBox>
-    </Wrapper>
+              <input
+                type="password"
+                name="password"
+                placeholder="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+                disabled={disabledInput}
+              />
+              <Button
+                data-back="OK"
+                data-front="Entrar"
+                disabled={disabledInput}
+              ></Button>
+              <Link to="/">
+                <p> Home</p>
+              </Link>
+            </FormContent>
+
+            {/*  */}
+          </form>
+        </AuthBox>
+      </Wrapper>
+    </Container>
   );
 }
+const Container = styled.div`
+  width: 100vw;
+  height: 100vh;
+  background-image: url(${Painel});
+  background-size: 100vw;
 
+  /* display: flex;
+flex-wrap: wrap;
+justify-content: center; */
+`;
 const Wrapper = styled.div`
-  width: 100%;
-  height: 100%;
+  img {
+    width: 100vw;
+    opacity: 0.8;
+  }
 
   @media (max-width: 650px) {
     width: 100%;
@@ -124,7 +134,8 @@ const Wrapper = styled.div`
 `;
 
 const AuthBox = styled.div`
-  background-color: #fff3c3;
+  /* background-color: #14a652;
+ 
   position: fixed;
   right: 0;
   bottom: 0;
@@ -146,36 +157,51 @@ const AuthBox = styled.div`
     width: 100%;
     align-items: initial;
     padding-top: 3vh;
-  }
+  } */
+  /* 
+  width: 50vw;
+  height: 10vh;
+  background-color: yellow;
+  position: relative;
+  bottom: 0; */
+
+  width: 50vw;
+  height: 10vh;
+  position: absolute;
+  bottom: 0;
+  left: 25vw;
 `;
 
 const FormContent = styled.div`
-  margin: 0 auto;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
-  height: 25vh;
-
+  height: 100%;
+  background-color:blue ;
+  p{
+    color: white;
+  }
   input {
-    width: 25vw;
+    width: 20vw;
     height: 8vh;
     margin-bottom: 10px;
     border-radius: 15px;
-    border: 1px solid #3a0088;
+    border: 1px solid #14a652;
     font-weight: 500;
     font-family: "Amatic";
-    color: #3a0088;
+    color: #14a652;
     font-size: 1.3rem;
     padding-left: 1.1rem;
   }
 
   input:focus {
-    outline-color: orange;
+    outline-color: black;
   }
 
   input::placeholder {
-    color: lightgray;
+    color: gray;
     font-weight: 700;
     font-family: "Amatic", sans-serif;
     font-size: 1.2rem;
@@ -198,17 +224,15 @@ const FormContent = styled.div`
 `;
 
 const Button = styled.button`
-  height: 10vh;
-  opacity: 1;
+ opacity: 1;
   outline: 0;
-  background-color: #3a0088;
+  background-color: black;
   position: relative;
   text-align: center;
   letter-spacing: 1px;
   font-family: "Amatic", sans-serif;
   display: inline-block;
   text-decoration: none;
-  width: 100%;
   border: none;
   border-radius: 15px;
   font-weight: 700;
@@ -236,16 +260,15 @@ const Button = styled.button`
 
   &:after {
     line-height: 50px;
-    height: 100%;
     top: 0;
     left: 0;
     opacity: 0;
     width: 100%;
-    color: #ffffff;
+    color: #FFF;
     display: block;
     transition: 0.5s;
     position: absolute;
-    background: orange;
+    background: #14a652;
     content: attr(data-back);
     transform: translateY(-50%) rotateX(90deg);
     border: none;
@@ -261,7 +284,6 @@ const Button = styled.button`
 
   &:before {
     line-height: 50px;
-    width: 100%;
     top: 0;
     left: 0;
     opacity: 1;
@@ -269,7 +291,7 @@ const Button = styled.button`
     display: block;
     transition: 0.5s;
     position: relative;
-    background: #3a0088;
+    background: black;
     content: attr(data-front);
     transform: translateY(0) rotateX(0);
     border: none;
