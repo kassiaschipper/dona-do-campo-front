@@ -1,35 +1,51 @@
 import styled from "styled-components";
 import {
-  FaTimes, 
-  FaHome, 
-  FaEnvelope, 
-  FaRegSun, 
-  FaUserAlt, 
-  FaIdCardAlt, 
+  FaTimes,
+  FaHome,
+  FaEnvelope,
+  FaUserAlt,
+  FaIdCardAlt,
   FaRegFileAlt,
   FaRegCalendarAlt,
-  FaChartBar
+  FaChartBar,
 } from "react-icons/fa";
 
 import SidebarItem from "./SidebarItem";
+import { useNavigate } from "react-router-dom";
 
 export default function Sidebar({ active }) {
-  
- function closeSidebar() {
+  const navigate = useNavigate();
+
+  function closeSidebar() {
     active(false);
-  };
-  
+  }
+
   return (
     <Wrapper sidebar={active}>
-      <FaTimes onClick={closeSidebar} />  
+      <FaTimes onClick={closeSidebar} />
       <Content>
-        <SidebarItem Icon={FaHome} Text="Home" />
-        <SidebarItem Icon={FaChartBar} Text="Etatisticas" />
-        <SidebarItem Icon={FaEnvelope} Text="Contato" />
-        <SidebarItem Icon={FaRegCalendarAlt} Text="Calendário" />
-        <SidebarItem Icon={FaIdCardAlt} Text="Equipe" />
-        <SidebarItem Icon={FaRegFileAlt} Text="Notícias" />
-        <SidebarItem Icon={FaUserAlt} Text="Login" />
+        <a href="#Home">
+          <SidebarItem Icon={FaHome} Text="Home" />
+        </a>
+        {/* <a href="#Estatísticas">  <SidebarItem Icon={FaChartBar} Text="Estatísticas" /></a> */}
+        <a href="#Noticias">
+          {" "}
+          <SidebarItem Icon={FaRegFileAlt} Text="Notícias" />
+        </a>
+        <a href="#Jogos">
+          {" "}
+          <SidebarItem Icon={FaRegCalendarAlt} Text="Jogos" />
+        </a>
+        <a href="#Equipe">
+          <SidebarItem Icon={FaIdCardAlt} Text="Equipe" />
+        </a>
+        <a href="#Contato">
+          {" "}
+          <SidebarItem Icon={FaEnvelope} Text="Contato" />{" "}
+        </a>
+        <span onClick={() => navigate("/sign-in")}>
+          <SidebarItem Icon={FaUserAlt} Text="Login" />
+        </span>
       </Content>
     </Wrapper>
   );
@@ -42,15 +58,14 @@ const Wrapper = styled.div`
   height: 100%;
   top: 0px;
   right: 0px;
-  width: 300px;
+  width: 25vw;
   right: ${(props) => (props.sidebar ? "0" : "-100%")};
   animation: openSidebar 0.4s;
-
   > svg {
     position: fixed;
     //color: white;
     color: #14a652;
-    width: 30px;
+    width: 25px;
     height: 30px;
     margin-top: 32px;
     margin-left: 32px;
@@ -64,7 +79,7 @@ const Wrapper = styled.div`
     }
     to {
       opacity: 1;
-      width: 300px;
+      width: 25vw;
     }
   }
 `;

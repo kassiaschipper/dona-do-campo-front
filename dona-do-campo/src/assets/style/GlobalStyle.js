@@ -54,7 +54,7 @@ table {
 
 body {
 	font-family: 'Raleway', sans-serif;
-    background-color: lightgray;
+    background-color: white;
 }
 `;
 export default GlobalStyle;
