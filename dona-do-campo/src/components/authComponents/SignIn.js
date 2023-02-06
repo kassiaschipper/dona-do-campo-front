@@ -179,7 +179,7 @@ const FormContent = styled.div`
   justify-content: space-between;
   width: 100%;
   height: 100%;
-  background-color:blue ;
+  
   p{
     color: white;
   }

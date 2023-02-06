@@ -14,7 +14,6 @@ export default function SidebarItem ({Icon, Text}) {
 export const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  //background-color: #1A202C; 
   background-color: #14a652;
   font-size: 20px;
   color: white;
