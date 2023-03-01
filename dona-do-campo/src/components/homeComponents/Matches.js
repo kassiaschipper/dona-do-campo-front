@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import furiaLogo from "../../assets/images/furiaLogo.jpg";
+import logo from "../../assets/images/logo.png";
 import LogoGremio from "../../assets/images/LogoGremio.jpg";
 import { GiSoccerField } from "react-icons/gi";
 export default function Matches() {
@@ -10,7 +10,7 @@ export default function Matches() {
       </TitleWrapper>
       <MatchesWrapper id="Jogos">
         <MatcheCard>
-          <img src={furiaLogo} />
+          <img src={logo} />
           <span>{1}</span>VS<span>{0}</span>
           <img src={LogoGremio} />
           <DateAndTime>
@@ -23,7 +23,7 @@ export default function Matches() {
           </h5>
         </MatcheCard>
         <MatcheCard>
-          <img src={furiaLogo} />
+          <img src={logo} />
           <span>{1}</span>VS<span>{0}</span>
           <img src={LogoGremio} />
           <DateAndTime>
@@ -36,7 +36,7 @@ export default function Matches() {
           </h5>
         </MatcheCard>
         <MatcheCard>
-          <img src={furiaLogo} />
+          <img src={logo} />
           <span>{1}</span>VS<span>{0}</span>
           <img src={LogoGremio} />
           <DateAndTime>

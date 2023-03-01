@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import React from "react";
 import styled from "styled-components";
 import { postSignIn } from "../../service/donaDoCampo";
-import Painel from "../../assets/images/Painel.jpg";
+import logo from "../../assets/images/logo.png";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
@@ -65,6 +65,8 @@ export default function SignIn() {
     <Container>
       <Wrapper>
         <AuthBox>
+          <img src={logo} alt="Logo do time"></img>
+          <h3>PAINEL ADMINISTRATIVO</h3>
           <form onSubmit={sendForm}>
             <FormContent>
               <input
@@ -86,11 +88,7 @@ export default function SignIn() {
                 required
                 disabled={disabledInput}
               />
-              <Button
-                data-back="OK"
-                data-front="Entrar"
-                disabled={disabledInput}
-              ></Button>
+              <Button disabled={disabledInput}>Entrar</Button>
               <Link to="/">
                 <p> Home</p>
               </Link>
@@ -104,100 +102,75 @@ export default function SignIn() {
   );
 }
 const Container = styled.div`
-  width: 100vw;
+  width: 100%;
   height: 100vh;
-  background-image: url(${Painel});
-  background-size: 100vw;
-
-  /* display: flex;
-flex-wrap: wrap;
-justify-content: center; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(0, 0, 0, 0.85);
 `;
 const Wrapper = styled.div`
-  img {
-    width: 100vw;
-    opacity: 0.8;
-  }
+  background-color: rgba(20, 166, 82, 0.65);
+  width: 25vw;
+  height: 80vh;
+  border-radius: 15px;
+
+  text-align: center;
 
   @media (max-width: 650px) {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    div {
-      display: flex;
-      flex-direction: column;
-    }
+    width: 80vw;
+    height: 70vh;
   }
 `;
 
 const AuthBox = styled.div`
-  /* background-color: #14a652;
- 
-  position: fixed;
-  right: 0;
-  bottom: 0;
-  width: 45vw;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 30% 0% 30% 0%;
-
-  p {
-    text-align: center;
-    margin-top: 20px;
-    color: #3a0088;
+  img {
+    width: 30%;
+    height: 30%;
+    margin-top: 10%;
   }
 
-  @media (max-width: 650px) {
-    width: 100%;
-    align-items: initial;
-    padding-top: 3vh;
-  } */
-  /* 
-  width: 50vw;
-  height: 10vh;
-  background-color: yellow;
-  position: relative;
-  bottom: 0; */
-
-  width: 50vw;
-  height: 10vh;
-  position: absolute;
-  bottom: 0;
-  left: 25vw;
+  h3 {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-size: 15px;
+    color: rgb(0, 0, 0, 0.8);
+  }
 `;
 
 const FormContent = styled.div`
+  width: 90%;
+  height: 40vh;
+  margin: auto;
   display: flex;
-  margin: 0 auto;
   align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  height: 100%;
-  
-  p{
-    color: white;
+  flex-direction: column;
+
+  @media (max-width: 650px) {
+    height: 65vh;
   }
+
+  p {
+    color: white;
+    font-size: 1.3rem;
+  }
+
   input {
     width: 20vw;
     height: 8vh;
     margin-bottom: 10px;
+    border: none;
     border-radius: 15px;
-    border: 1px solid #14a652;
     font-weight: 500;
     font-family: "Amatic";
-    color: #14a652;
     font-size: 1.3rem;
-    padding-left: 1.1rem;
+    text-align: center;
   }
 
   input:focus {
-    outline-color: black;
+    outline-color: rgba(20, 166, 82);
   }
 
   input::placeholder {
@@ -224,87 +197,22 @@ const FormContent = styled.div`
 `;
 
 const Button = styled.button`
- opacity: 1;
-  outline: 0;
-  background-color: black;
-  position: relative;
-  text-align: center;
-  letter-spacing: 1px;
-  font-family: "Amatic", sans-serif;
-  display: inline-block;
-  text-decoration: none;
+  background-color: rgb(0, 0, 0, 0.8);
+  width: 70%;
+  height: 15%;
   border: none;
-  border-radius: 15px;
-  font-weight: 700;
+  border-radius: 8px;
+  text-align: center;
+  font-family: "Amatic", sans-serif;
+  color: white;
+  letter-spacing: 1px;
   cursor: pointer;
 
-  @media (max-width: 650px) {
-    width: 70%;
-    height: 8vh;
-    display: flex;
-    align-items: center;
-    margin: 0 auto;
-  }
-
-  &:hover {
-    &:after {
-      opacity: 1;
-      transform: translateY(0) rotateX(0);
-    }
-
-    &:before {
-      opacity: 0;
-      transform: translateY(50%) rotateX(90deg);
-    }
-  }
-
-  &:after {
-    line-height: 50px;
-    top: 0;
-    left: 0;
-    opacity: 0;
-    width: 100%;
-    color: #FFF;
-    display: block;
-    transition: 0.5s;
-    position: absolute;
-    background: #14a652;
-    content: attr(data-back);
-    transform: translateY(-50%) rotateX(90deg);
-    border: none;
-    border-radius: 15px;
-    font-size: 1rem;
-
-    @media (max-width: 650px) {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-  }
-
-  &:before {
-    line-height: 50px;
-    top: 0;
-    left: 0;
-    opacity: 1;
-    color: #ffffff;
-    display: block;
-    transition: 0.5s;
-    position: relative;
-    background: black;
-    content: attr(data-front);
-    transform: translateY(0) rotateX(0);
-    border: none;
-    font-size: 1rem;
-    border-radius: 15px;
-  }
-`;
-
-const TitleWrapper = styled.div`
   margin: 0 auto;
-  font-size: 1.5rem;
-  color: #3a0088;
-  font-weight: 500;
+  margin-bottom: 0.8rem;
+  @media (max-width: 650px) {
+    height: 6%;
+  }
 `;
 
 export { AuthBox, FormContent, Button };
